@@ -1,14 +1,13 @@
-import * as babylon from "babylon";
-const start=babylon.parse("startCount()");
-const end=babylon.parse("endCount()");
-console.log(start)
+import * as t from "babel-types";
+const startFun=t.expressionStatement(t.callExpression(t.identifier("startProfile"),[]));
+const endFun=t.expressionStatement(t.callExpression(t.identifier("endProfile"),[]));
 export default function ({ types: t }) {
     return {
         visitor: {
             FunctionExpression(path, state) {
                 let subFunction=0;
-                if (path.node.async) {
-                    path.node.body.body.unshift(start);
+                //if (path.node.async) {
+                    path.node.body.body.unshift(startFun);
                     path.traverse({
                         ArrowFunctionExpression: {
                             enter(){subFunction = 1},
@@ -20,13 +19,13 @@ export default function ({ types: t }) {
                         },
                         ReturnStatement(path){
                             if (!subFunction){
-                                path.insertBefore(end);
+                                path.insertBefore(endFun);
                                 console.log('return');
                             }
                         }
                     });
-                    path.node.body.body.push(end);
-                }
+                    path.node.body.body.push(endFun);
+                //}
             }
         }
     }
