@@ -1,4 +1,4 @@
-# babel-plugin-test
+# babel-plugin-async-function-profile
 
 
 
@@ -21,7 +21,7 @@
 ## Installation
 
 ```sh
-$ npm install babel-plugin-test
+$ npm install babel-plugin-async-function-profile
 ```
 
 ## Usage
@@ -32,20 +32,20 @@ $ npm install babel-plugin-test
 
 ```json
 {
-  "plugins": ["test"]
+  "plugins": ["async-function-profile"]
 }
 ```
 
 ### Via CLI
 
 ```sh
-$ babel --plugins test script.js
+$ babel --plugins async-function-profile script.js
 ```
 
 ### Via Node API
 
 ```javascript
 require("babel-core").transform("code", {
-  plugins: ["test"]
+  plugins: ["async-function-profile"]
 });
 ```
