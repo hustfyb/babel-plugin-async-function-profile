@@ -12,11 +12,16 @@
   "scripts": {
     "clean": "rm -rf lib",
     "build": "babel src -d lib",
-    "test": "mocha --compilers js:babel-register",
+    "test": "babel test/test.js",
+    "debug": "babel src -d lib && babel test/test.js",
     "test:watch": "npm run test -- --watch",
     "prepublish": "npm run clean && npm run build"
   },
   "keywords": [
     "babel-plugin"
-  ]
+  ],
+  "dependencies": {
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-template": "^6.15.0"
+  }
 }
