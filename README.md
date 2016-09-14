@@ -1,22 +1,6 @@
 # babel-plugin-async-function-profile
 
-
-
-## Example
-
-**In**
-
-```js
-// input code
-```
-
-**Out**
-
-```js
-"use strict";
-
-// output code
-```
+Auto add count function in async function to get true time spend in a function (not just cpu tick).
 
 ## Installation
 
